@@ -1,22 +1,3 @@
-/*
- * This file is part of PCAPdroid.
- *
- * PCAPdroid is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * PCAPdroid is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with PCAPdroid.  If not, see <http://www.gnu.org/licenses/>.
- *
- * Copyright 2020-21 - Emanuele Faranda
- */
-
 package com.emanuelef.remote_capture;
 
 import android.content.Context;
@@ -93,23 +74,15 @@ public class Blacklists {
                 "https://feodotracker.abuse.ch/downloads/ipblocklist.txt"); // NOTE: some IPs are in emergingthreats, but not all
         addList("DigitalSide Threat-Intel", BlacklistDescriptor.Type.IP_BLACKLIST,  "digitalsideit_ips.txt",
                 "https://raw.githubusercontent.com/davidonzo/Threat-Intel/master/lists/latestips.txt");
-        
-        // https://cinsscore.com/list/ci-badguys.txt
         addList("CINS Army", BlacklistDescriptor.Type.IP_BLACKLIST, "ci_badguys.txt",
                 "https://cinsscore.com/list/ci-badguys.txt");
-     
-
+        
         // Experimental blacklists
         addList("Phishing Army", BlacklistDescriptor.Type.IP_BLACKLIST,  "phishing_army_blocklist.txt",
                 "https://phishing.army/download/phishing_army_blocklist.txt");
         addList("SNORT", BlacklistDescriptor.Type.IP_BLACKLIST,  "ip-block-list",
                 "https://snort.org/downloads/ip-block-list");
         
-        // To review
-        //https://github.com/StevenBlack/hosts
-        //
-        //
-
         deserialize();
         checkFiles();
     }
@@ -201,7 +174,7 @@ public class Blacklists {
             }
         }
 
-        // Ensure that the only the specified lists exist
+        // Ensure that only the specified lists exist
         File bldir = new File(mContext.getFilesDir().getPath() + "/malware_bl");
         bldir.mkdir();
         File[] files = bldir.listFiles();
@@ -358,4 +331,3 @@ public class Blacklists {
         mStopRequest = true;
     }
 }
-
